@@ -1,0 +1,86 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_data_feed_brand
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-30 14:22+0000\n"
+"PO-Revision-Date: 2023-03-30 14:22+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_data_feed_brand
+#: model:ir.model.fields,field_description:product_data_feed_brand.field_product_product__feed_brand_id
+#: model:ir.model.fields,field_description:product_data_feed_brand.field_product_template__feed_brand_id
+#: model_terms:ir.ui.view,arch_db:product_data_feed_brand.view_product_data_feed_brand_form
+msgid "Brand"
+msgstr "Бренд"
+
+#. module: product_data_feed_brand
+#: model:ir.model.fields,field_description:product_data_feed_brand.field_product_data_feed_brand__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: product_data_feed_brand
+#: model:ir.model.fields,field_description:product_data_feed_brand.field_product_data_feed_brand__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: product_data_feed_brand
+#: model:ir.model.fields,field_description:product_data_feed_brand.field_product_data_feed_brand__display_name
+#: model:ir.model.fields,field_description:product_data_feed_brand.field_product_template__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: product_data_feed_brand
+#: model:ir.model.fields,field_description:product_data_feed_brand.field_product_data_feed_brand__id
+#: model:ir.model.fields,field_description:product_data_feed_brand.field_product_template__id
+msgid "ID"
+msgstr ""
+
+#. module: product_data_feed_brand
+#: model:ir.model.fields,field_description:product_data_feed_brand.field_product_data_feed_brand____last_update
+#: model:ir.model.fields,field_description:product_data_feed_brand.field_product_template____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: product_data_feed_brand
+#: model:ir.model.fields,field_description:product_data_feed_brand.field_product_data_feed_brand__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: product_data_feed_brand
+#: model:ir.model.fields,field_description:product_data_feed_brand.field_product_data_feed_brand__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: product_data_feed_brand
+#: model:ir.model.fields,field_description:product_data_feed_brand.field_product_data_feed_brand__name
+msgid "Name"
+msgstr "Назва"
+
+#. module: product_data_feed_brand
+#: model_terms:ir.ui.view,arch_db:product_data_feed_brand.product_template_search_view
+msgid "Product Brand"
+msgstr "Бренд"
+
+#. module: product_data_feed_brand
+#: model:ir.model.constraint,message:product_data_feed_brand.constraint_product_data_feed_brand_product_data_feed_brand_uniq
+msgid "Product Brand Name must be unique."
+msgstr "Назва бренду товару має бути унікальною."
+
+#. module: product_data_feed_brand
+#: model:ir.model,name:product_data_feed_brand.model_product_data_feed_brand
+msgid "Product Brands for Feeds"
+msgstr "Бренди товарів (для фідів)"
+
+#. module: product_data_feed_brand
+#: model:ir.model,name:product_data_feed_brand.model_product_template
+msgid "Product Template"
+msgstr ""

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="brand_lux" model="product.data.feed.brand">
+        <field name="name">Lux Furniture</field>
+    </record>
+    <record id="brand_red_and_white" model="product.data.feed.brand">
+        <field name="name">Red and White</field>
+    </record>
+    <record id="brand_wood_idea" model="product.data.feed.brand">
+        <field name="name">Wood Idea!</field>
+    </record>
+
+</odoo>

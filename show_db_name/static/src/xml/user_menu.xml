@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="UserMenu" t-inherit="web.UserMenu" t-inherit-mode="extension" owl="1" >
+         <xpath expr="//Dropdown/t/span" position="replace">
+             <span class="oe_topbar_name d-none d-lg-block ms-1"><t t-esc="user.name"/><t  t-esc="' (' + user.db.name + ')'"/></span>
+        </xpath>
+
+    </t>
+</templates>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="totals_table">
+        <table class="table table-sm" style="font-size:11px;">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Neto gravado</th>
+                    <th>Neto no gravado</th>
+                    <th>Neto exento</th>
+                    <th>IVA 27</th>
+                    <th>IVA 21</th>
+                    <th>IVA 10.5</th>
+                    <th>Otros</th>
+                    <th>Total gravado</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr t-foreach="totals_list" t-as="total">
+                    <td>
+                        <p t-esc="total.get('tipo')"/>
+                    </td>
+                    <td class="text-end">
+                        <p t-esc="total.get('neto_gravado')" t-options="{'widget': 'monetary', 'display_currency': total.get('currency')}"/>
+                    </td>
+                    <td class="text-end">
+                        <p t-esc="total.get('neto_no_gravado')" t-options="{'widget': 'monetary', 'display_currency': total.get('currency')}"/>
+                    </td>
+                    <td class="text-end">
+                        <p t-esc="total.get('neto_exento')" t-options="{'widget': 'monetary', 'display_currency': total.get('currency')}"/>
+                    </td>
+                    <td class="text-end">
+                        <p t-esc="total.get('iva_27')" t-options="{'widget': 'monetary', 'display_currency': total.get('currency')}"/>
+                    </td>
+                    <td class="text-end">
+                        <p t-esc="total.get('iva_21')" t-options="{'widget': 'monetary', 'display_currency': total.get('currency')}"/>
+                    </td>
+                    <td class="text-end">
+                        <p t-esc="total.get('iva_10_5')" t-options="{'widget': 'monetary', 'display_currency': total.get('currency')}"/>
+                    </td>
+                    <td class="text-end">
+                        <p t-esc="total.get('otros')" t-options="{'widget': 'monetary', 'display_currency': total.get('currency')}"/>
+                    </td>
+                    <td class="text-end">
+                        <p t-esc="total.get('total_gravado')" t-options="{'widget': 'monetary', 'display_currency': total.get('currency')}"/>
+                    </td>
+                    <td class="text-end">
+                        <p t-esc="total.get('total')" t-options="{'widget': 'monetary', 'display_currency': total.get('currency')}"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
+    <template id="ledger_report_extend" inherit_id="dogma_iva.ledger_report">
+<!--        <xpath expr="//table[1]/tbody/t[@t-set='total_total']" position="after">-->
+<!--            <t t-set="total_other_tax" t-value="0"/>-->
+<!--        </xpath>-->
+
+<!--        <xpath expr="//table[1]/tbody/tr[1]/td[13]" position="replace">-->
+<!--            <td name="other_tax">-->
+<!--                <t t-set="other_tax" t-value="0" />-->
+<!--                <t t-foreach="invoice.move_id.tax_totals['groups_by_subtotal']['Base imponible']" t-as="tax">-->
+<!--                    <t t-if="tax['tax_group_name'] not in ['IVA 21%', 'IVA 10.5%', 'IVA 27%', 'IVA No Gravado', 'IVA 0%', 'IVA Exento']">-->
+<!--                        <t t-set="other_tax" t-value="float(other_tax) + float(tax['tax_group_amount'])" />-->
+<!--                    </t>-->
+<!--                </t>-->
+<!--                <t t-if="invoice.move_id.l10n_latam_document_type_id.internal_type == 'credit_note'">-->
+<!--                    <t t-set="other_tax" t-value="other_tax * -1" />-->
+<!--                </t>-->
+<!--                <t t-set="total_other_tax" t-value="total_other_tax + other_tax" />-->
+<!--                <span t-esc="other_tax" t-options="{'widget': 'monetary', 'display_currency': invoice.move_id.currency_id}" />-->
+<!--            </td>-->
+<!--        </xpath>-->
+
+<!--        <xpath expr="//table[1]/tbody/tr[2]/td[13]" position="inside">-->
+<!--            <span t-esc="total_other_tax" t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}"/>-->
+<!--        </xpath>-->
+
+        <xpath expr="//table[1]" position="after">
+            <h4>Tipo de comprobante</h4>
+            <t t-call="l10n_ar_ledger_vat_report_totals_extend.totals_table">
+                <t t-set="totals_list" t-value="o.get_total_by_document_type().values()"/>
+            </t>
+
+            <h4>Tipo de responsable ante el AFIP</h4>
+            <t t-call="l10n_ar_ledger_vat_report_totals_extend.totals_table">
+                <t t-set="totals_list" t-value="o.get_total_by_afip_responsibility_type().values()"/>
+            </t>
+
+            <h4>Otros</h4>
+            <table class="table table-sm" style="font-size:11px;">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-set="total_other_taxes" t-value="o.get_total_other_taxes().values()"/>
+                    <t t-if="not total_other_taxes">
+                        <tr>
+                            <td colspan="2">
+                                No hay Otros totales.
+                            </td>
+                        </tr>
+                    </t>
+                    <tr t-foreach="total_other_taxes" t-as="total">
+                        <td>
+                            <p t-esc="total.get('tipo')"/>
+                        </td>
+                        <td class="text-end">
+                            <p t-esc="total.get('total')" t-options="{'widget': 'monetary', 'display_currency': total.get('currency')}"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </xpath>
+    </template>
+</odoo>
