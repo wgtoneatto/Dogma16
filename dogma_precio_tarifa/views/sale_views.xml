@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--<record id="view_mostrar_telefono_kanban" model="ir.ui.view">
+            <field name="name">view.mostrar.telefono.kanban</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='oe_kanban_details d-flex flex-column']/ul/li[last()]" position="after">
+                        <li><field name="phone"/></li>
+                </xpath>
+            </field>
+    </record>-->
+
+    <record id="view_mostrar_precio_tarifa_kanban" model="ir.ui.view">
+            <field name="name">view.mostrar.precio.tarifa.kanban</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_kanban_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='list_price']" position="replace">
+<!--                    <t t-if="precio_tarifa">-->
+                        <field name="precio_tarifa"/>
+<!--                    </t>-->
+<!--                    <t t-if="precio_tarifa_2">-->
+<!--                        <field name="precio_tarifa_2"/>-->
+<!--                    </t>-->
+<!--                    <t t-if="precio_tarifa_3">-->
+<!--                        <field name="precio_tarifa_3"/>-->
+<!--                    </t>-->
+<!--                    <t t-if="precio_tarifa_4">-->
+<!--                        <field name="precio_tarifa_4"/>-->
+<!--                    </t>-->
+                </xpath>
+            </field>
+    </record>
+
+    <record id="view_mostrar_precio_tarifa_tree" model="ir.ui.view">
+            <field name="name">view.mostrar.precio.tarifa.tree</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="standard_price" position="before">
+<!--                    <t t-if="precio_tarifa >= 0">-->
+                        <field name="precio_tarifa" optional="show"/>
+<!--                    </t>-->
+<!--                    <t t-if="precio_tarifa_2">-->
+                        <field name="precio_tarifa_1" optional="show"/>
+                        <field name="precio_tarifa_2" optional="show"/>
+<!--                    </t>-->
+<!--                    <t t-if="precio_tarifa_3">-->
+                        <field name="precio_tarifa_3" optional="show"/>
+<!--                    </t>-->
+<!--                    <t t-if="precio_tarifa_4">-->
+                        <field name="precio_tarifa_4" optional="show"/>
+                        <field name="precio_tarifa_5" optional="show"/>
+                        <field name="precio_tarifa_6" optional="show"/>
+<!--                    </t>-->
+                    <!--<field name="precio_tarifa">action=model._mostrar_precios_tarifa()</field>-->
+                </field>
+            </field>
+    </record>
+</odoo>
